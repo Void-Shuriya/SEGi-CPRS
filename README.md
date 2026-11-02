@@ -1,12 +1,10 @@
-# 🎓 SEGi CPRS — Course Performance Report System
+# 🎓 SEGi CPRS - Course Performance Report System
 
 A database-driven course performance reporting system developed as part of my **Diploma Final Year Project**.
 
 ## 🌐 Running the System
 
 This project runs locally using XAMPP. After setup, open [SEGi CPRS](http://localhost/segi_cprs/).
-
-A public live demo is not currently available. GitHub stores the source code; GitHub Pages cannot run the PHP backend or database.
 
 ## 📖 Overview
 
@@ -47,9 +45,9 @@ The system combines Course Learning Outcome (CLO) assessment, automatic result c
 6. Wait for the success message. The file creates the `segi_cprs` database, its tables, and the sample data automatically.
 7. Open [http://localhost/segi_cprs/](http://localhost/segi_cprs/) and sign in using a starter account below.
 
-Import the SQL file only for a fresh installation, not over an existing `segi_cprs` database.
+Import the SQL file only for a fresh installation.
 
-The database connection uses the default local XAMPP settings: host `localhost`, user `root`, an empty password, and database `segi_cprs`. Custom settings can be provided through the server environment variables `CPRS_DB_HOST`, `CPRS_DB_USER`, `CPRS_DB_PASSWORD`, and `CPRS_DB_NAME`.
+The database connection uses the default local XAMPP settings: host `localhost`, user `root`, an empty password, and database `segi_cprs`. 
 
 ### Starter Accounts
 
@@ -62,7 +60,7 @@ The database connection uses the default local XAMPP settings: host `localhost`,
 | Lecturer      | `steven`  | `steven123`  |
 | Lecturer      | `shahidh` | `shahidh123` |
 
-The starter database includes **20 fictional students, 8 sample courses, and 49 enrollments with marks**. Four courses are assigned to **Amizar**, with one course assigned to each of the other four lecturers. Sign in as `amizar` to explore populated dashboards, CLO comments, and reports with Pass, Resit, and Retake examples.
+The starter database includes **20 fictional students, 8 sample courses, and 49 enrollments with marks**. 
 
 Programme and study-mode options are also included. Additional students can be added through phpMyAdmin; there is no student-registration page. Course titles, assessments, and results are illustrative demonstration data, not official academic records.
 
