@@ -45,7 +45,7 @@ The system combines Course Learning Outcome (CLO) assessment, automatic result c
 6. Wait for the success message. The file creates the `segi_cprs` database, its tables, and the sample data automatically.
 7. Open [http://localhost/segi_cprs/](http://localhost/segi_cprs/) and sign in using a starter account below.
 
-Import the SQL file only for a fresh installation.
+Import the SQL file for a fresh installation.
 
 The database connection uses the default local XAMPP settings: host `localhost`, user `root`, an empty password, and database `segi_cprs`. 
 
@@ -60,9 +60,9 @@ The database connection uses the default local XAMPP settings: host `localhost`,
 | Lecturer      | `steven`  | `steven123`  |
 | Lecturer      | `shahidh` | `shahidh123` |
 
-The starter database includes **20 fictional students, 8 sample courses, and 49 enrollments with marks**. 
+The starter database includes **20 students, 8 courses, and 49 enrollments with marks**. 
 
-Programme and study-mode options are also included. Additional students can be added through phpMyAdmin; there is no student-registration page. Course titles, assessments, and results are illustrative demonstration data, not official academic records.
+Programme and study-mode options are also included. Additional students can be added through phpMyAdmin; there is no student-registration page. Course titles, assessments, and results are sample data.
 
 ## 📌 Notes
 
