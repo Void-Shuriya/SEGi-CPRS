@@ -1,0 +1,1882 @@
+/* GLOBAL RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Reserve scrollbar space for pages */
+html {
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Slight default bottom margin to text elements */
+p,
+h2,
+h3,
+h4,
+label {
+    margin-bottom: 10px;
+}
+
+/* LOGIN PAGE */
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 380px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Only apply to inputs inside the login box */
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Only the main Login button fills the form width. */
+.login-box button[type='submit'] {
+    width: 100%;
+    padding: 12px;
+    background: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.login-box button[type='submit']:hover {
+    background: #004494;
+}
+
+.login-subtitle {
+    color: #666;
+    margin: 20px 0;
+}
+
+/* Error messages for login failure */
+.error {
+    color: #721c24;
+    font-size: 14px;
+    margin-bottom: 10px;
+    background: #f8d7da;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #f5c6cb;
+}
+
+/* DASHBOARD & SHARED STYLES */
+
+/* Main Header Navigation */
+.header {
+    background: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header h2 {
+    margin: 0;
+    color: #0056b3;
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+}
+
+/* Global Container */
+.content {
+    padding: 20px;
+}
+
+.content-medium,
+.content-wide {
+    margin: 0 auto;
+}
+
+.content-medium {
+    max-width: 1200px;
+}
+
+.content-wide {
+    max-width: 1600px;
+}
+
+.page-heading {
+    margin-top: 15px;
+    color: #333;
+}
+
+.section-title {
+    margin-top: 0;
+    color: #0056b3;
+}
+
+.form-page {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-title {
+    text-align: center;
+}
+
+/* Standard White Box Container */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Shared Form Inputs */
+form input[type='text'],
+form input[type='number'],
+form textarea,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form textarea {
+    min-height: 90px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* Course codes appear uppercase while typing and are normalized again in PHP. */
+.uppercase-input {
+    text-transform: uppercase;
+}
+
+table input[type='number'] {
+    width: 75px;
+    margin: 0 auto;
+    padding: 8px;
+}
+
+table .attendance-input {
+    width: 90px;
+}
+
+table .student-remark {
+    min-width: 190px;
+    min-height: 70px;
+    margin: 0;
+}
+
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-danger,
+.btn-secondary,
+.btn-logout {
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 18px;
+    vertical-align: middle;
+    padding: 9px 14px;
+}
+
+.btn-primary {
+    background: #0056b3;
+}
+
+.btn-primary:hover {
+    background: #004494;
+}
+
+.btn-success {
+    background: #28a746;
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+.btn-warning {
+    background: #ffc107;
+    color: #333;
+}
+
+.btn-warning:hover {
+    background: #e0a800;
+}
+
+.btn-danger {
+    background: #dc3545;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+.btn-secondary {
+    background: #6c757d;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-logout {
+    font-weight: bold;
+    background: #dc3545;
+    margin-left: 15px;
+}
+
+.btn-logout:hover {
+    background: #c82333;
+}
+
+/* Make keyboard focus visible without changing the normal button design. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(0, 86, 179, 0.3);
+    outline-offset: 2px;
+}
+
+/* TABLES */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.table-wrapper table {
+    min-width: 850px;
+}
+
+.inline-form {
+    display: inline-block;
+    margin: 0;
+}
+
+/* COURSE PERFORMANCE WORKSPACE */
+
+.clo-setup-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.clo-setup-item {
+    min-width: 0;
+}
+
+.clo-field-label {
+    display: block;
+    margin: 8px 0 10px;
+    line-height: 1.4;
+}
+
+.clo-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.clo-form .clo-name-input {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+    margin: 0;
+}
+
+.clo-form .clo-weight-input {
+    flex: 0 0 72px;
+    width: 72px;
+    margin: 0;
+}
+
+.clo-save-button {
+    margin-top: 10px;
+}
+
+.page-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.form-actions,
+.title-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.form-actions {
+    margin-top: 10px;
+}
+
+.course-actions {
+    white-space: normal;
+}
+
+.course-action {
+    min-width: 80px;
+    min-height: 36px;
+    margin: 3px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 18px;
+    vertical-align: middle;
+    border: 1px solid transparent;
+}
+
+.course-actions .btn-success {
+    background: #198754;
+    border-color: #146c43;
+}
+
+.course-actions .btn-success:hover {
+    background: #146c43;
+}
+
+.course-actions .btn-warning {
+    background: #ffc107;
+    color: #212529;
+    border-color: #d39e00;
+}
+
+.course-actions .btn-warning:hover {
+    background: #e0a800;
+}
+
+.course-actions .btn-danger {
+    background: #c82333;
+    border-color: #a71d2a;
+}
+
+.course-actions .btn-danger:hover {
+    background: #a71d2a;
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.attainment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin: 15px 0;
+}
+
+.attainment-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.attainment-track {
+    height: 30px;
+    background: #e9ecef;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 14px 0;
+}
+
+.attainment-bar {
+    min-width: 54px;
+    height: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition:
+        width 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.attainment-low {
+    background: #dc3545;
+}
+
+.attainment-high {
+    background: #28a745;
+}
+
+.marks-table-wrapper {
+    overflow-x: auto;
+}
+
+.marks-disabled-message {
+    padding: 15px;
+    color: #dc3545;
+    font-weight: bold;
+    background: #fde8e8;
+    border: 1px solid #f8b4b4;
+    border-radius: 4px;
+}
+
+.text-center,
+.raw-mark-heading,
+.weighted-mark-heading,
+.weighted-result,
+.total-result {
+    text-align: center;
+}
+
+.raw-mark-heading {
+    background: #e9ecef;
+}
+
+.marks-table th.weighted-mark-heading {
+    background-color: #cfe8d4;
+    border-color: #a9d4b3;
+}
+
+.marks-table td.weighted-result {
+    background-color: #e3f4e6;
+    border-color: #b9ddc1;
+    font-weight: bold;
+}
+
+.total-result {
+    font-size: 15px;
+}
+
+.save-marks-button {
+    margin-top: 16px;
+    padding: 10px 25px;
+    font-size: 15px;
+}
+
+.component-result {
+    text-align: center;
+    font-weight: bold;
+}
+
+.component-p {
+    color: #155724;
+}
+
+.component-f {
+    color: #721c24;
+}
+
+.report-results .remarks-column {
+    width: 24%;
+    min-width: 190px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+    .clo-setup-grid,
+    .attainment-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Keep the approved layout usable on phones and narrow laptop windows. */
+@media (max-width: 600px) {
+    .login-box {
+        width: calc(100% - 24px);
+        padding: 28px 22px;
+    }
+
+    .header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .header-user {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-logout {
+        margin-left: 0;
+    }
+
+    .content {
+        padding: 12px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .page-title-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    form input[type='text'],
+    form input[type='number'],
+    form textarea,
+    form select {
+        font-size: 16px;
+    }
+
+    th,
+    td {
+        padding: 9px;
+    }
+}
+
+/* STUDENT ENROLLMENT */
+
+.intake-filter {
+    max-width: 320px;
+    margin-bottom: 18px;
+}
+
+.intake-filter select {
+    margin-bottom: 0;
+}
+
+.student-list {
+    margin-bottom: 12px;
+}
+
+.intake-group {
+    margin-bottom: 18px;
+}
+
+.intake-group[hidden] {
+    display: none;
+}
+
+.intake-heading {
+    margin: 18px 0 8px;
+    padding-bottom: 6px;
+    color: #0056b3;
+    border-bottom: 2px solid #e4edf7;
+}
+
+.student-choice {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.student-choice input {
+    margin-top: 4px;
+}
+
+.enroll-selected-button {
+    margin-top: 2px;
+}
+
+.enrolled-table-wrapper {
+    max-height: 420px;
+    overflow: auto;
+    border: 1px solid #ddd;
+}
+
+.enrolled-table-wrapper table {
+    margin-top: 0;
+}
+
+.enrolled-table-wrapper th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* MESSAGES AND RESULT BADGES */
+
+.alert-danger,
+.alert-success {
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    font-weight: bold;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    min-width: 65px;
+}
+
+.badge-pass {
+    background-color: #d4edda;
+    color: #155724;
+    border: 2px solid #c3e6cb;
+}
+
+.badge-resit {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 2px solid #ffeeba;
+}
+
+.badge-retake {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 2px solid #f5c6cb;
+}
+
+.print-only {
+    display: none;
+}
+
+/* PRINTABLE COURSE REPORT */
+
+@media print {
+    body {
+        background: white;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .screen-only {
+        display: none !important;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    .print-report {
+        color: #333;
+    }
+
+    .report-header {
+        text-align: center;
+        border-bottom: 2px solid #0056b3;
+        margin-bottom: 18px;
+    }
+
+    .report-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 24px;
+        margin-bottom: 18px;
+    }
+
+    .print-section {
+        margin-bottom: 18px;
+        break-inside: avoid;
+    }
+
+    .print-attainment-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .print-attainment-card {
+        border: 1px solid #ddd;
+        padding: 12px;
+    }
+
+    .print-comment {
+        min-height: 45px;
+        white-space: pre-wrap;
+    }
+
+    .report-results {
+        font-size: 10px;
+    }
+
+    .report-results th,
+    .report-results td {
+        padding: 5px;
+    }
+
+    .report-summary {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        margin-top: 14px;
+        padding-top: 10px;
+        border-top: 1px solid #ddd;
+    }
+}
+
+/* Reporting, filtering and accessibility additions. */
+:root {
+    --blue: #0056b3;
+    --blue-dark: #004494;
+    --ink: #333;
+    --muted: #53657b;
+    --line: #d6dfe9;
+    --surface: #f4f4f4;
+}
+h1 {
+    font-size: 24px;
+    line-height: 1.3;
+    margin: 0 0 12px;
+}
+a {
+    color: var(--blue);
+}
+[hidden] {
+    display: none !important;
+}
+.page-title-row {
+    margin-bottom: 18px;
+}
+.card h3:first-child {
+    margin-top: 0;
+}
+.field-hint,
+.course-meta {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin: 8px 0 18px;
+}
+.course-meta {
+    margin-top: -6px;
+}
+input[type='search'],
+.filter-bar select {
+    border: 1px solid #8999ae;
+    background: #fff;
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 9px 10px;
+    min-height: 36px;
+    max-width: 100%;
+    font: inherit;
+}
+input[type='search'] {
+    width: 100%;
+}
+input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--blue);
+    flex-shrink: 0;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+    outline: 1px solid #47749e;
+    outline-offset: 0;
+    box-shadow: none;
+}
+
+.filter-bar {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 16px 0;
+}
+.filter-bar > div {
+    flex: 1 1 150px;
+}
+.filter-bar .filter-search {
+    flex: 2 1 220px;
+}
+.filter-bar label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.87rem;
+}
+.filter-bar input,
+.filter-bar select,
+form .filter-bar select {
+    width: 100%;
+    margin: 0;
+}
+.filter-bar .intake-filter {
+    margin: 0;
+}
+.selection-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin: 12px 0;
+}
+.selection-tools p {
+    margin: 0 0 0 4px;
+}
+#course-count,
+#result-count,
+#selection-count {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+.student-choice {
+    background: #fff;
+    border-color: var(--line);
+    padding: 12px;
+    border-radius: 7px;
+    font-weight: 400;
+}
+.student-choice:has(input:checked) {
+    background: #edf5ff;
+    border-color: var(--blue);
+}
+.student-choice:focus-within {
+    outline: 1px solid #47749e;
+    outline-offset: 0;
+}
+.enrollment-count {
+    font-size: 0.86rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+}
+th {
+    font-size: 0.85rem;
+    background: #edf2f8;
+    color: #283e59;
+}
+td,
+th {
+    border-color: var(--line);
+    padding: 11px 13px;
+}
+tbody tr:nth-child(even) td {
+    background: #f8fafc;
+}
+tbody tr:hover td {
+    background: #f0f5fc;
+}
+th.student-identity {
+    text-align: left;
+    font-size: 0.9rem;
+    min-width: 180px;
+    background: #fff;
+}
+.student-identity small {
+    display: block;
+    color: var(--muted);
+    font-weight: 400;
+    margin-top: 4px;
+}
+.results-scroll {
+    max-height: 620px;
+}
+.results-scroll thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+.results-scroll .student-identity {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+.marks-table-wrapper {
+    overflow-x: auto;
+}
+.marks-table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.marks-table th,
+.marks-table td {
+    border-width: 0 1px 1px 0;
+}
+
+.marks-table-disabled {
+    opacity: 1;
+    pointer-events: auto;
+    user-select: auto;
+}
+.marks-table-disabled input,
+.marks-table-disabled textarea {
+    background: #eef1f5;
+}
+fieldset {
+    border: 0;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+}
+.field-error {
+    display: block;
+    color: #9b182c;
+    font-size: 0.84rem;
+    margin: 5px 0;
+}
+[aria-invalid='true'] {
+    border: 2px solid #b42336 !important;
+    background: #fff4f4 !important;
+}
+.alert-danger,
+.alert-success,
+.notice {
+    border-radius: 8px;
+    padding: 12px 15px;
+    line-height: 1.5;
+}
+.notice {
+    background: #edf4fc;
+    border: 1px solid #b9cee7;
+    color: #244b79;
+    margin: 12px 0;
+    font-size: 0.9rem;
+}
+.remarks-cell {
+    min-width: 180px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+.attainment-bar {
+    min-width: 0;
+}
+.attainment-track {
+    overflow: hidden;
+    margin: 14px 0 6px;
+}
+.attainment-value {
+    font-weight: bold;
+    margin: 0 0 16px;
+}
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+}
+.metric {
+    padding: 18px 20px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--ink);
+    text-decoration: none;
+}
+.metric > span {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--muted);
+}
+.metric strong {
+    display: block;
+    font-size: 2rem;
+    line-height: 1.4;
+}
+.metric small {
+    font-size: 0.78rem;
+}
+.status-metric {
+    border-top: 4px solid var(--blue);
+}
+.status-metric.pass {
+    border-top-color: #187044;
+}
+.status-metric.resit {
+    border-top-color: #9c720d;
+}
+.status-metric.retake {
+    border-top-color: #b42336;
+}
+.status-metric:hover {
+    box-shadow: 0 3px 12px #25466422;
+    background: #f9fbff;
+}
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+.chart-row {
+    display: grid;
+    grid-template-columns: 28px 1fr 42px;
+    align-items: center;
+    gap: 12px;
+    margin: 9px 0;
+    font-size: 0.85rem;
+}
+.chart-track {
+    height: 12px;
+    background: #e7edf4;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.chart-track > span {
+    display: block;
+    height: 100%;
+    background: var(--blue);
+    border-radius: 4px;
+}
+.chart-track > span.attainment-low {
+    background: #b42336;
+}
+.chart-track > span.attainment-high {
+    background: #187044;
+}
+.chart-value {
+    text-align: right;
+    font-weight: 600;
+}
+.clo-chart-item {
+    margin: 24px 0;
+}
+.chart-title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+.chart-title > span {
+    white-space: nowrap;
+    font-weight: 700;
+}
+dialog {
+    margin: auto;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 28px;
+    max-width: 480px;
+    width: calc(100% - 32px);
+    color: var(--ink);
+}
+dialog::backdrop {
+    background: #13294099;
+}
+.skip-link {
+    position: fixed;
+    top: -100px;
+    left: 16px;
+    padding: 12px 18px;
+    background: white;
+    color: var(--blue);
+    z-index: 100;
+}
+.skip-link:focus {
+    top: 12px;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+@media (max-width: 1000px) {
+    .summary-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .chart-grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 600px) {
+    .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+    .metric {
+        padding: 14px;
+    }
+    .metric strong {
+        font-size: 1.6rem;
+    }
+    .title-actions {
+        width: 100%;
+    }
+    .filter-bar > div {
+        flex-basis: 100%;
+    }
+    .chart-title {
+        flex-wrap: wrap;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+@media print {
+    @page {
+        size: landscape;
+        margin: 12mm;
+    }
+    body {
+        font-size: 11px;
+        line-height: 1.35;
+        color: #222;
+    }
+    .print-section {
+        break-inside: auto;
+    }
+    .print-attainment-card,
+    .report-meta {
+        break-inside: avoid;
+    }
+    .report-results thead {
+        display: table-header-group;
+    }
+    .report-results tr {
+        break-inside: avoid;
+    }
+    .report-results th,
+    .report-results td {
+        font-size: 9px;
+        padding: 4px;
+    }
+    .report-results th {
+        position: static;
+    }
+    .report-results .remarks-column {
+        min-width: 100px;
+        width: 18%;
+    }
+    .report-results .badge {
+        padding: 2px 4px;
+        min-width: 0;
+        font-size: 9px;
+    }
+}
+
+/* Keep two decimal places visible alongside the native number controls. */
+.marks-table input[type='number'] {
+    width: 104px;
+    min-width: 104px;
+    padding: 8px;
+}
+.results-scroll thead th:first-child {
+    left: 0;
+    z-index: 5;
+}
+@media print {
+    .report-results th:first-child {
+        position: static;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+    .print-report {
+        background: white;
+    }
+}
+
+@media print {
+    .report-results {
+        break-after: avoid;
+    }
+    .report-results tbody tr:last-child {
+        break-after: avoid;
+    }
+    .report-summary {
+        break-before: avoid;
+        break-inside: avoid;
+    }
+}
+
+@media print {
+    .report-tail {
+        break-inside: avoid;
+    }
+    .report-summary-cell {
+        border: 0;
+        padding: 0 !important;
+        background: white !important;
+    }
+    .report-summary {
+        font-size: 11px;
+    }
+}
+
+@media print {
+    .report-tail > tr:first-child {
+        break-after: avoid-page;
+        page-break-after: avoid;
+    }
+}
+
+@media print {
+    .report-results th,
+    .report-results td {
+        padding: 3px;
+    }
+}
+
+/* Compact layout in the original CPRS style. */
+.brand {
+    color: #0056b3;
+    text-decoration: none;
+}
+.header-user {
+    gap: 0;
+}
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 12px;
+}
+.login-box {
+    position: static;
+    transform: none;
+    max-width: 100%;
+}
+.login-box h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.login-box input {
+    font:
+        13.3333px Arial,
+        sans-serif;
+}
+.btn-success,
+.attainment-high {
+    background: #198754;
+}
+.btn-success:hover {
+    background: #146c43;
+}
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-danger,
+.btn-secondary,
+.btn-logout {
+    min-height: 36px;
+}
+form input[type='text']:disabled,
+form input[type='number']:disabled,
+form select:disabled,
+form textarea:disabled {
+    background: #e2e5e9;
+    color: #555;
+    border-color: #b7bec7;
+    opacity: 1;
+    cursor: not-allowed;
+    -webkit-text-fill-color: #555;
+}
+@media (max-width: 600px) {
+    .login-box input {
+        font-size: 16px;
+    }
+}
+
+/* Stable course columns and softer controls for the editing pages. */
+.workflow-page .btn-secondary {
+    background: #d8dee5;
+    border: 1px solid #b5bec9;
+    color: #293746;
+    padding: 8px 13px;
+}
+.workflow-page .btn-secondary:hover {
+    background: #c5ced8;
+}
+.workflow-page .form-page input,
+.workflow-page .form-page select,
+.workflow-page .form-page textarea {
+    color: #444;
+    font-family: inherit;
+}
+.workflow-page .form-page input:disabled,
+.workflow-page .form-page select:disabled {
+    background: #d8dee5;
+    color: #44515f;
+    border-color: #b5bec9;
+    -webkit-text-fill-color: #44515f;
+}
+.course-list-table {
+    table-layout: fixed;
+}
+.table-wrapper .admin-course-table {
+    min-width: 1080px;
+}
+.table-wrapper .lecturer-course-table {
+    min-width: 958px;
+}
+.course-list-table .course-code-col {
+    width: 100px;
+}
+.course-list-table .programme-col {
+    width: 100px;
+}
+.course-list-table .mode-col {
+    width: 110px;
+}
+.course-list-table .semester-col {
+    width: 115px;
+}
+.course-list-table .lecturer-col {
+    width: 125px;
+}
+.course-list-table .admin-actions-col {
+    width: 284px;
+}
+.course-list-table .students-col {
+    width: 90px;
+}
+.course-list-table .open-course-col {
+    width: 160px;
+}
+.course-list-table td {
+    overflow-wrap: anywhere;
+}
+.course-action-group {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+.course-action-group .course-action {
+    margin: 0;
+    min-width: 76px;
+    white-space: nowrap;
+}
+.select-all-choice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 8px 10px;
+    font-weight: normal;
+}
+
+/* Consistent page gutters, compact filters and quieter course actions. */
+.content {
+    width: calc(100% - 80px);
+    margin-left: auto;
+    margin-right: auto;
+}
+.content-wide {
+    max-width: 1440px;
+}
+[data-course-list] > .filter-bar .filter-search {
+    flex: 1 1 300px;
+    max-width: 360px;
+}
+[data-course-list] > .filter-bar > div {
+    flex: 1 1 180px;
+    max-width: 250px;
+}
+.course-actions .btn-success {
+    background: #e0eee7;
+    color: #245c40;
+    border-color: #a8cbb7;
+}
+.course-actions .btn-success:hover {
+    background: #cce2d5;
+}
+.course-actions .btn-warning {
+    background: #f5ecd6;
+    color: #70591e;
+    border-color: #d6c38e;
+}
+.course-actions .btn-warning:hover {
+    background: #ecdfbd;
+}
+.course-actions .btn-danger {
+    background: #f4e3e5;
+    color: #8a303d;
+    border-color: #d7adb4;
+}
+.course-actions .btn-danger:hover {
+    background: #ebcdd2;
+}
+.table-wrapper .admin-course-table {
+    min-width: 1040px;
+}
+.course-list-table .admin-actions-col {
+    width: 266px;
+}
+.marks-table-wrapper {
+    max-height: 520px;
+    overflow: auto;
+    border: 1px solid #b9c4d0;
+}
+.marks-table {
+    margin-top: 0;
+}
+.marks-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: #edf2f8;
+}
+.marks-table thead th {
+    background: #edf2f8;
+}
+.marks-table thead .raw-mark-heading {
+    background: #e9ecef;
+}
+.marks-table thead .weighted-mark-heading {
+    background: #cfe8d4;
+}
+.marks-table tr > :last-child {
+    border-right: 0;
+}
+#results-table {
+    table-layout: fixed;
+    min-width: 1250px;
+}
+#results-table th:first-child {
+    width: 200px;
+}
+#results-table th:last-child {
+    width: 190px;
+}
+#student-results {
+    scroll-margin-top: 20px;
+}
+@media (max-width: 600px) {
+    .content {
+        width: 100%;
+    }
+    [data-course-list] > .filter-bar > div,
+    [data-course-list] > .filter-bar .filter-search {
+        max-width: none;
+    }
+}
+
+/* Room for results while remarks remain available by scrolling. */
+.marks-table {
+    table-layout: fixed;
+    min-width: 1238px;
+}
+.marks-table .student-col {
+    width: 160px;
+}
+.marks-table .attendance-col {
+    width: 120px;
+}
+.marks-table .raw-col {
+    width: 96px;
+}
+.marks-table .weighted-col {
+    width: 64px;
+}
+.marks-table .total-col {
+    width: 80px;
+}
+.marks-table .grade-col {
+    width: 52px;
+}
+.marks-table .component-col {
+    width: 48px;
+}
+.marks-table .status-col {
+    width: 96px;
+}
+.marks-table .remarks-col {
+    width: 200px;
+}
+.marks-table th,
+.marks-table td {
+    padding: 10px 8px;
+    text-align: center;
+    vertical-align: middle;
+    overflow-wrap: anywhere;
+}
+.marks-table .student-remark {
+    min-width: 0;
+    max-width: 100%;
+}
+.marks-table th.compact-mark-heading {
+    padding-left: 6px;
+    padding-right: 6px;
+    white-space: nowrap;
+}
+.marks-table .status-container {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.marks-table th.student-identity {
+    min-width: 0;
+}
+.marks-table tbody td:has(input.mark-input) {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.marks-table input.mark-input {
+    width: 80px;
+    min-width: 0;
+    max-width: 100%;
+    padding: 6px 4px;
+}
+.marks-table .weighted-result,
+.marks-table .weighted-mark-heading {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.dashboard-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px 20px;
+    align-items: center;
+}
+.dashboard-heading h1 {
+    margin: 0;
+    min-width: 0;
+}
+.dashboard-heading .title-actions {
+    grid-column: 2;
+    grid-row: 1 / 3;
+}
+.dashboard-heading .course-meta {
+    grid-column: 1;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+}
+.course-meta {
+    color: #333;
+    font-size: 16px;
+    margin: 0 0 18px;
+    line-height: 1.5;
+}
+.metric {
+    border-top-width: 4px;
+}
+.chart-grid {
+    align-items: stretch;
+}
+.chart-grid > .card {
+    margin-bottom: 20px;
+}
+.clo-chart-item {
+    margin: 20px 0;
+}
+.clo-chart-item:last-child {
+    margin-bottom: 0;
+}
+.chart-row {
+    margin: 13px 0;
+}
+.chart-row:last-child {
+    margin-bottom: 0;
+}
+[data-course-list] > .filter-bar,
+#dashboard-filters {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    justify-content: flex-start;
+}
+.course-action-group .course-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 76px;
+    padding: 8px 5px;
+    font-weight: bold;
+}
+.course-action-group .course-action > span {
+    display: inline-block;
+}
+@media (max-width: 1000px) {
+    .dashboard-heading {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .dashboard-heading .course-meta {
+        order: 1;
+    }
+    .dashboard-heading .title-actions {
+        order: 2;
+    }
+}
+
+/* Centred student results with a consistent name and ID treatment. */
+.marks-table th.student-identity,
+#results-table th.student-identity {
+    text-align: center;
+    min-width: 0;
+}
+.student-name {
+    display: block;
+    max-width: 132px;
+    margin: 0 auto;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+.student-identity small {
+    margin-top: 7px;
+    white-space: nowrap;
+}
+.marks-table input,
+.marks-table textarea {
+    text-align: center;
+}
+#results-table th,
+#results-table td {
+    text-align: center;
+    vertical-align: middle;
+}
+#results-table th:first-child {
+    width: 160px;
+}
+.chart-description {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 20px;
+}
+#save-marks:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* Shared soft-colour button treatment across every screen. */
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-danger,
+.btn-secondary,
+.btn-logout,
+.login-box button[type='submit'] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 36px;
+    padding: 8px 13px;
+    border: 1px solid;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-primary,
+.login-box button[type='submit'] {
+    background: #e3edf8;
+    color: #245b8d;
+    border-color: #a9c3df;
+}
+.btn-primary:hover,
+.login-box button[type='submit']:hover {
+    background: #cedff1;
+}
+.btn-success {
+    background: #e0eee7;
+    color: #245c40;
+    border-color: #a8cbb7;
+}
+.btn-success:hover {
+    background: #cce2d5;
+}
+.btn-warning {
+    background: #f5ecd6;
+    color: #70591e;
+    border-color: #d6c38e;
+}
+.btn-warning:hover {
+    background: #ecdfbd;
+}
+.btn-danger,
+.btn-logout {
+    background: #f4e3e5;
+    color: #8a303d;
+    border-color: #d7adb4;
+}
+.btn-danger:hover,
+.btn-logout:hover {
+    background: #ebcdd2;
+}
+.btn-secondary,
+.workflow-page .btn-secondary {
+    background: #d8dee5;
+    color: #293746;
+    border-color: #b5bec9;
+}
+.btn-secondary:hover,
+.workflow-page .btn-secondary:hover {
+    background: #c5ced8;
+}
+.login-box button[type='submit'] {
+    padding: 12px;
+}
+.enrollment-filters .filter-search {
+    flex: 1 1 300px;
+    max-width: 360px;
+}
+.enrollment-filters .intake-filter {
+    flex: 1 1 180px;
+    max-width: 250px;
+}
+.clo-chart-card {
+    display: flex;
+    flex-direction: column;
+}
+.clo-chart-bars {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 24px;
+    padding: 8px 0;
+}
+.clo-chart-bars .clo-chart-item {
+    margin: 0;
+}
+.clo-chart-bars .chart-track {
+    height: 20px;
+}
+@media (max-width: 600px) {
+    .enrollment-filters .filter-search,
+    .enrollment-filters .intake-filter {
+        flex-basis: 100%;
+        max-width: none;
+    }
+}
+
+/* Keep the course action on one line and long CLO text within its column. */
+.lecturer-course-table td:last-child {
+    text-align: center;
+}
+.lecturer-course-table .btn-primary {
+    white-space: nowrap;
+}
+.clo-chart-card,
+.clo-chart-item {
+    min-width: 0;
+}
+.clo-chart-comment {
+    margin: 12px 0 0;
+    color: #44515f;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+.clo-chart-comment span {
+    white-space: pre-wrap;
+}
+@media print {
+    .print-attainment-card {
+        min-width: 0;
+        overflow-wrap: anywhere;
+        break-inside: auto;
+    }
+    .print-attainment-card h4 {
+        break-after: avoid;
+    }
+    .print-comment {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        orphans: 3;
+        widows: 3;
+    }
+}
+
+/* A little extra room for Status on smaller desktop viewports. */
+@media (min-width: 1000px) and (max-width: 1250px) {
+    .marks-table {
+        min-width: 1200px;
+    }
+    .marks-table .student-col {
+        width: 160px;
+    }
+    .marks-table .raw-col {
+        width: 90px;
+    }
+    .marks-table .weighted-col {
+        width: 60px;
+    }
+}
